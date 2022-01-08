@@ -14,12 +14,12 @@ font = ("Arial",10,"normal")
 
 start_text = "guess state"
 
-score = 0
 #putting the guessed states to not count them next time
 guessed_states = []
 while len(guessed_states) < 50:
     #getting input from the user
-    guess = screen.textinput(f"Score {score}/50",start_text).capitalize()
+    guess = screen.textinput(f"Score {len(guessed_states)}/50",start_text).title() #captilize first letter of each word
+    print(f"{guess}")
     #checking if the user guessed right and did not guess twice.
     if guess in states and guess not in guessed_states:
         turtle.hideturtle()
@@ -29,7 +29,7 @@ while len(guessed_states) < 50:
         y = int(data[data.state == guess].y)
         turtle.goto(x=x, y=y)
         turtle.write(f"{guess}", False, align="center", font=font)
-        score += 1
+
         guessed_states.append(guess)
         start_text = "What's another state name? "
     #if the user wants to exit the while loop
